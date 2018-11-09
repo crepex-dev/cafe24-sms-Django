@@ -16,7 +16,7 @@ DEFAULTS = {
     # Optional
     'REQUEST_TIMEOUT': 30.0,
     'TEST_MODE': False,
-    'RESPONSE_CHAR_SET': 'euc-kr',
+    'CHARSET': 'euc-kr',
 }
 
 
