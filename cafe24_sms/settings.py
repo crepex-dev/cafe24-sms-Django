@@ -17,6 +17,7 @@ DEFAULTS = {
     'REQUEST_TIMEOUT': 30.0,
     'TEST_MODE': False,
     'CHARSET': 'euc-kr',
+    'TIMEZONE': 'Asia/Seoul',
 }
 
 

@@ -27,7 +27,7 @@ def send_message(message, receiver,
     return request.send_message()
 
 
-def reserve_message(message, receiver, res_date, res_time,
+def reserve_message(message, receiver, reservation_time,
                     sender=None, title=None, rpt_num=None, rpt_time=None):
     """Shortcut API for :class:`cafe24_sms.data.SMSData`, :class:`cafe24_sms.request.Request`.\n
     Send SMS or LMS message request use with :class:`requests` package.\n
@@ -37,8 +37,7 @@ def reserve_message(message, receiver, res_date, res_time,
     :param str or list receiver: A telephone number separated by '-'.
     :param str sender: If none, use in settings sender. just same as receiver. (Optional)
     :param str title: A message title. if not none, use in LMS Type. (Optional)
-    :param str res_date: Reservation date. Date format is 'YYYYMMDD' (Optional)
-    :param str res_time: Reservation time. It must me set at least 10 minutes. Time format is 'HHmmss' (Optional)
+    :param datetime reservation_time: Datetime to reservation. (Optional)
     :param int rpt_num: A repeat number 1 to 10. (Optional)
     :param int rpt_time: A repeat time gap. It must be set at least 15 minutes. (Optional)
 
@@ -49,7 +48,6 @@ def reserve_message(message, receiver, res_date, res_time,
     :raises: :class:`cafe24_sms.exceptions.ReceivedErrorResponse`.
     """
     data = SMSData(message, receiver, sender, title,
-                   res_date=res_date, res_time=res_time,
-                   rpt_num=rpt_num, rpt_time=rpt_time)
+                   reservation_time=reservation_time, rpt_num=rpt_num, rpt_time=rpt_time)
     request = Request(request_data=data)
     return request.send_message()

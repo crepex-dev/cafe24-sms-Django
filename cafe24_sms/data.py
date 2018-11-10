@@ -1,4 +1,5 @@
 from .settings import module_settings
+from .utils import get_local_datetime
 
 
 class SMSData:
@@ -11,21 +12,19 @@ class SMSData:
     :param str or list receiver: A telephone number separated by '-'.
     :param str sender: If none, use in settings sender. just same as receiver. (Optional)
     :param str title: A message title. if not none, use in LMS Type. (Optional)
-    :param str res_date: Reservation date. Date format is 'YYYYMMDD' (Optional)
-    :param str res_time: Reservation time. It must me set at least 10 minutes. Time format is 'HHmmss' (Optional)
+    :param datetime reservation_time: Datetime to reservation. (Optional)
     :param int rpt_num: A repeat number 1 to 10. (Optional)
     :param int rpt_time: A repeat time gap. It must be set at least 15 minutes. (Optional)
     """
 
     def __init__(self, message, receiver, sender=None, title=None,
-                 res_date=None, res_time=None, rpt_num=None, rpt_time=None, **kwargs):
+                 reservation_time=None, rpt_num=None, rpt_time=None, **kwargs):
         self.message = message.encode(module_settings.CHARSET)
         self.receiver = receiver
         self.title = title
         self.rpt_num = rpt_num
         self.rpt_time = rpt_time
-        self.res_date = res_date
-        self.res_time = res_time
+        self.reservation_time = reservation_time
         self.is_lms = False
 
         if kwargs:
@@ -75,10 +74,11 @@ class SMSData:
                 'repeatTime': self.rpt_time,
             })
 
-        if self.res_date and self.res_time:
+        if self.reservation_time:
+            reservation_time = get_local_datetime(self.reservation_time)
             self.base_data.update({
-                'rdate': self.res_date,
-                'rtime': self.res_time,
+                'rdate': reservation_time.strftime('%Y%m%d'),
+                'rtime': reservation_time.strftime('%H%M%S'),
             })
 
         return self.base_data
