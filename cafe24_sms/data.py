@@ -8,7 +8,7 @@ class SMSData:
     With korean words, about 45 character SMS, more then LMS (max 1000 character).\n
     For detail, see also the Cafe24 site: `<https://www.cafe24.com/?controller=myservice_hosting_sms_example>`_.\n
     :param str message: A message data.
-    :param str receiver: A telephone number separated by '-'.
+    :param str or list receiver: A telephone number separated by '-'.
     :param str sender: If none, use in settings sender. just same as receiver. (Optional)
     :param str title: A message title. if not none, use in LMS Type. (Optional)
     :param str res_date: Reservation date. Date format is 'YYYYMMDD' (Optional)
