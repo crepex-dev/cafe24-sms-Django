@@ -65,7 +65,7 @@ class Request(RequestBase, SMSRequest):
     and get result_code/remaining sms count tuple or exception.\n
     For detail, see also the Cafe24 site: `<https://www.cafe24.com/?controller=myservice_hosting_sms_example>`_.\n
     """
+    timeout = module_settings.REQUEST_TIMEOUT
 
     def send_message(self):
-        timeout = module_settings.REQUEST_TIMEOUT
-        return self.sms_request(self.SMS_SEND_URL, timeout)
+        return self.sms_request(self.SMS_SEND_URL, self.timeout)
