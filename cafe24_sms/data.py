@@ -18,7 +18,7 @@ class SMSData:
     """
 
     def __init__(self, message, receiver, sender=None, title=None,
-                 res_date=None, res_time=None, rpt_num=None, rpt_time=None):
+                 res_date=None, res_time=None, rpt_num=None, rpt_time=None, **kwargs):
         self.message = message.encode(module_settings.CHARSET)
         self.receiver = receiver
         self.title = title
@@ -27,6 +27,11 @@ class SMSData:
         self.res_date = res_date
         self.res_time = res_time
         self.is_lms = False
+
+        if kwargs:
+            raise TypeError(
+                u"__init__ got unexpected keyword argument {}".format(
+                    ', '.join(kwargs.keys())))
 
         default_sender = module_settings.SENDER.split('-')
         split_numbers = sender.split('-') if sender else default_sender
