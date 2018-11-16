@@ -8,9 +8,14 @@ from .settings import module_settings
 
 
 def get_local_datetime(datetime):
-    tz_name = module_settings.TIMEZONE or timezone.get_current_timezone_name()
-    tz = pytz.timezone(tz_name)
-    return datetime.astimezone(tz)
+    user_tz_name = module_settings.TIMEZONE or timezone.get_current_timezone_name()
+    user_tz = pytz.timezone(user_tz_name)
+
+    if datetime.tzinfo:
+        return datetime.astimezone(user_tz)
+    else:
+        system_tz = timezone.get_current_timezone()
+        return system_tz.localize(datetime).astimezone(user_tz)
 
 
 def trans_string_to_datetime(date, date_format):
