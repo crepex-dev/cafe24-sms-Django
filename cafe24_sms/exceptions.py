@@ -1,9 +1,6 @@
-from django.utils.translation import ugettext_lazy as _
-
-
 class SMSModuleException(Exception):
 
-    default_message = _('A module error occurred.')
+    default_message = 'A module error occurred.'
     default_code = '_error'
 
     def __init__(self, code=None, message=None):
@@ -20,11 +17,11 @@ class SMSModuleException(Exception):
 
 class RequestNotReachable(SMSModuleException):
 
-    default_message = _('Not reachable. Connection timeout')
+    default_message = 'Not reachable. Connection timeout'
     default_code = '_timeout'
 
 
 class ReceivedErrorResponse(SMSModuleException):
 
-    default_message = _('Received unknown error. Check please.')
+    default_message = 'Received unknown error. Check please.'
     default_code = '_unknown'
