@@ -6,8 +6,8 @@ Python 2 & 3 compatible
 
 .. image:: https://travis-ci.org/iumjjing/cafe24-sms-Django.svg?branch=master
     :target: https://travis-ci.org/iumjjing/cafe24-sms-Django/
-.. image:: https://coveralls.io/repos/github/iumjjing/cafe24-sms-Django/badge.svg?branch=master
-    :target: https://coveralls.io/github/iumjjing/cafe24-sms-Django?branch=master
+.. image:: https://coveralls.io/repos/github/iumjjing/cafe24-sms-Django/badge.svg?branch=feature%2Ftravis
+    :target: https://coveralls.io/github/iumjjing/cafe24-sms-Django?branch=feature%2Ftravis
 
 - Source code: `<https://github.com/iumjjing/cafe24-sms-Django>`_
 - Distribution: `<https://pypi.python.org/pypi/cafe24-sms-Django>`_
