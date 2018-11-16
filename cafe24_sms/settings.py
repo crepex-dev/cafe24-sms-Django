@@ -2,7 +2,6 @@ from __future__ import with_statement
 
 from django.conf import settings
 from django.test.signals import setting_changed
-from django.utils.translation import ugettext_lazy as _
 
 
 MODULE_SETTINGS_NAME = 'CAFE24_SMS_SETTINGS'
@@ -36,7 +35,7 @@ class Cafe24SMSSettings:
 
     def __getattr__(self, attr):
         if attr not in self.defaults:
-            raise AttributeError(_('Invalid setting "%s"' % attr))
+            raise AttributeError('Invalid setting "%s"' % attr)
 
         try:
             return self.custom_settings[attr]
