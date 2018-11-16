@@ -1,8 +1,6 @@
 import functools
 import xml.etree.ElementTree as ET
 
-from django.utils.translation import ugettext_lazy as _
-
 import requests
 
 from . import exceptions
@@ -49,7 +47,7 @@ class SMSRequest:
             raise exceptions.RequestNotReachable()
         except UnicodeDecodeError:
             raise exceptions.SMSModuleException(
-                message=_('Response decode error with %s' % char_set)
+                message='Response decode error with %s' % char_set
             )
 
         if result_code not in [self.SEND_SUCCESS_CODE, self.RESERVATION_CODE] or response.status_code != 200:
@@ -78,7 +76,7 @@ class ResultCheckRequest:
             raise exceptions.RequestNotReachable()
         except UnicodeDecodeError:
             raise exceptions.SMSModuleException(
-                message=_('Response decode error with %s' % char_set)
+                message='Response decode error with %s' % char_set
             )
 
         if result_code != self.CHECK_SUCCESS_CODE or response.status_code != 200:
