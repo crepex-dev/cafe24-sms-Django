@@ -77,7 +77,7 @@ RESULT_CODES = {
 }
 
 
-def get_result_message(code, is_lms):
+def get_result_message(code):
     try:
         return RESULT_CODES[code]
     except KeyError:
