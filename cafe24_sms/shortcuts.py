@@ -39,7 +39,7 @@ def reserve_message(message, receiver, reservation_time,
     :param str or list receiver: A telephone number separated by '-'.
     :param str sender: If none, use in settings sender. just same as receiver. (Optional)
     :param str title: A message title. if not none, use in LMS Type. (Optional)
-    :param datetime reservation_time: Datetime to reservation. (Optional)
+    :param datetime.datetime reservation_time: Datetime to reservation. (Optional)
     :param int rpt_num: A repeat number 1 to 10. (Optional)
     :param int rpt_time: A repeat time gap. It must be set at least 15 minutes. (Optional)
 
