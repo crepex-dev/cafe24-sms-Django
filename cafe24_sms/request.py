@@ -72,8 +72,8 @@ class ResultCheckRequest:
 
         try:
             response = requests_post(url, data=self.data)
-            xml_tree = ET.fromstring(response.content.decode('utf-8'))
-            result_code = xml_tree.findtext('code', 'UNKNOWN')
+            root = ET.fromstring(response.content.decode('utf-8'))
+            result_code = root.findtext('code', 'UNKNOWN')
         except requests.exceptions.RequestException:
             raise exceptions.RequestNotReachable()
         except UnicodeDecodeError:
@@ -88,7 +88,7 @@ class ResultCheckRequest:
                 message=error_message
             )
 
-        return result_code, xml_tree
+        return result_code, root
 
 
 class Request(RequestBase, SMSRequest, ResultCheckRequest):
@@ -99,7 +99,7 @@ class Request(RequestBase, SMSRequest, ResultCheckRequest):
     OR\n
     Init with :class:`cafe24_sms.data.ResultCheckRequestData` instance and
     use `result_check` method to try send result request\n
-    as a result, get result_code/result xml tree tuple or exception.\n
+    as a result, get result_code/result xml root element tuple or exception.\n
     For detail, see also the Cafe24 site: `<https://www.cafe24.com/?controller=myservice_hosting_sms_example>`_.\n
     """
 
