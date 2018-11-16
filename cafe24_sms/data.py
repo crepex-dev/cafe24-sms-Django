@@ -2,8 +2,8 @@ from .settings import module_settings
 from .utils import get_local_datetime
 
 
-class SMSData:
-    """SMS data class.\n
+class SMSRequestData:
+    """SMSRequest data class.\n
     Instance use for Request class. :class:`cafe24_sms.request.Request`\n
     if message byte len <= 90 then SMS, len <= 2000 then LMS. (default charset 'euc-kr')
     With korean words, about 45 character SMS, more then LMS (max 1000 character).\n
@@ -25,7 +25,6 @@ class SMSData:
         self.rpt_num = rpt_num
         self.rpt_time = rpt_time
         self.reservation_time = reservation_time
-        self.is_lms = False
 
         if kwargs:
             raise TypeError(
@@ -60,7 +59,6 @@ class SMSData:
         })
 
         if self.message.__len__() > 90:
-            self.is_lms = True
             self.base_data.update({'smsType': 'L'})
 
             if self.title:

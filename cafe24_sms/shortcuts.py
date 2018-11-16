@@ -1,10 +1,10 @@
-from .data import SMSData
+from .data import SMSRequestData
 from .request import Request
 
 
 def send_message(message, receiver,
                  sender=None, title=None, rpt_num=None, rpt_time=None):
-    """Shortcut API for :class:`cafe24_sms.data.SMSData`, :class:`cafe24_sms.request.Request`.\n
+    """Shortcut API for :class:`cafe24_sms.data.SMSRequestData`, :class:`cafe24_sms.request.Request`.\n
     Send SMS or LMS message request use with :func:`requests.post`.\n
     For detail, see also the Cafe24 site: `<https://www.cafe24.com/?controller=myservice_hosting_sms_example>`_.\n
 
@@ -21,15 +21,15 @@ def send_message(message, receiver,
     :raises: :class:`cafe24_sms.exceptions.SMSModuleException`.
     :raises: :class:`cafe24_sms.exceptions.ReceivedErrorResponse`.
     """
-    data = SMSData(message, receiver, sender, title,
-                   rpt_num=rpt_num, rpt_time=rpt_time)
+    data = SMSRequestData(message, receiver, sender, title,
+                          rpt_num=rpt_num, rpt_time=rpt_time)
     request = Request(request_data=data)
     return request.send_message()
 
 
 def reserve_message(message, receiver, reservation_time,
                     sender=None, title=None, rpt_num=None, rpt_time=None):
-    """Shortcut API for :class:`cafe24_sms.data.SMSData`, :class:`cafe24_sms.request.Request`.\n
+    """Shortcut API for :class:`cafe24_sms.data.SMSRequestData`, :class:`cafe24_sms.request.Request`.\n
     Send SMS or LMS message request use with :class:`requests` package.\n
     For detail, see also the Cafe24 site: `<https://www.cafe24.com/?controller=myservice_hosting_sms_example>`_.\n
 
@@ -47,7 +47,7 @@ def reserve_message(message, receiver, reservation_time,
     :raises: :class:`cafe24_sms.exceptions.SMSModuleException`.
     :raises: :class:`cafe24_sms.exceptions.ReceivedErrorResponse`.
     """
-    data = SMSData(message, receiver, sender, title,
-                   reservation_time=reservation_time, rpt_num=rpt_num, rpt_time=rpt_time)
+    data = SMSRequestData(message, receiver, sender, title,
+                          reservation_time=reservation_time, rpt_num=rpt_num, rpt_time=rpt_time)
     request = Request(request_data=data)
     return request.send_message()
