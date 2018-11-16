@@ -5,3 +5,4 @@ requests
 pytest-django
 flake8
 flake8-isort
+restructuredtext_lint
