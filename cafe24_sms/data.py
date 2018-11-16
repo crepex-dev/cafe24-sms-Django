@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from .settings import module_settings
 from .utils import get_local_datetime
 from .utils import trans_string_to_datetime
