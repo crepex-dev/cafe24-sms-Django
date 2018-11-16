@@ -28,7 +28,7 @@ class SendFunctionsTestCase(TestCase):
     def test_over_length_lms_send_failure(self):
         with self.assertRaisesMessage(
                 cafe24_sms.exceptions.ReceivedErrorResponse,
-                str(cafe24_sms.get_result_message('0004', True))
+                str(cafe24_sms.get_result_message('0004'))
         ):
             result_code, remaining_count = cafe24_sms.send_message(
                 self.max_length_lms + '더',
