@@ -1,5 +1,3 @@
-from django.utils.translation import ugettext_lazy as _
-
 from .settings import module_settings
 from .utils import get_local_datetime
 from .utils import trans_string_to_datetime
@@ -159,16 +157,16 @@ class ResultCheckXMLData:
     :param xml.etree.ElementTree.Element root: result xml root element
     """
     SEND_TYPE_CODES = {
-        'R': _('예약발송'),
-        'I': _('일반발송'),
+        'R': '예약발송',
+        'I': '일반발송',
     }
     SEND_STATUS_CODES = {
-        '1': _('일반발송 요청'),
-        '2': _('예약발송 요청'),
-        '3': _('발송성공'),
-        '9': _('발송실패'),
+        '1': '일반발송 요청',
+        '2': '예약발송 요청',
+        '3': '발송성공',
+        '9': '발송실패',
     }
-    UNKNOWN = _('미분류')
+    UNKNOWN = '미분류'
 
     def __init__(self, code, root):
         self.code = code
