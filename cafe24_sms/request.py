@@ -23,11 +23,11 @@ class RequestBase:
 
         if kwargs:
             raise TypeError(
-                u"__init__ got unexpected keyword argument {}".format(
+                u'__init__ got unexpected keyword argument {}'.format(
                     ', '.join(kwargs.keys())))
 
     def __repr__(self):
-        return f'<Request: {self.request_data}>'
+        return '<Request: {data}>'.format(data=self.request_data)
 
     @property
     def data(self):

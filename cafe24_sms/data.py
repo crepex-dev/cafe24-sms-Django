@@ -31,7 +31,7 @@ class SMSRequestData:
 
         if kwargs:
             raise TypeError(
-                u"__init__ got unexpected keyword argument {}".format(
+                u'__init__ got unexpected keyword argument {}'.format(
                     ', '.join(kwargs.keys())))
 
         default_sender = module_settings.SENDER.split('-')
@@ -116,7 +116,7 @@ class ResultCheckRequestData:
 
         if kwargs:
             raise TypeError(
-                u"__init__ got unexpected keyword argument {}".format(
+                u'__init__ got unexpected keyword argument {}'.format(
                     ', '.join(kwargs.keys())))
 
         base_data = {

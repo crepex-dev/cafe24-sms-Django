@@ -11,7 +11,11 @@ class SMSModuleException(Exception):
         self.message = message or self.default_message
 
     def __str__(self):
-        return f'<{self.__class__.__name__} code: {self.code} message: {self.message}>'
+        return '<{class_name} code: {code} message: {message}>'.format(
+            class_name=self.__class__.__name__,
+            code=self.code,
+            message=self.message,
+        )
 
 
 class RequestNotReachable(SMSModuleException):
